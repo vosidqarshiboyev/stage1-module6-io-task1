@@ -23,17 +23,14 @@ public class FileReader {
             }
             s=s.replace(":"," ");
             s=s.replace("\n"," ");
-            System.out.println(s);
             ArrayList <String>a=new ArrayList<>();
             for (String b:(s.split(" "))){
                 if(!b.isEmpty())
                     a.add(b.trim());
             }
-            for(int i=0;i<a.size();i++){
-                System.out.println(a.get(i)+",");
-            }
+
             if(a.size()==8) {
-                System.out.println(a.size());
+
                 profile.setAge(Integer.parseInt(a.get(3)));
                 profile.setName(a.get(1));
                 profile.setPhone(Long.parseLong(a.get(7)));

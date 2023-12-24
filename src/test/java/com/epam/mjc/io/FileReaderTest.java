@@ -49,10 +49,10 @@ public class FileReaderTest {
     public void testCodeWithoutProhibitedLibraries() throws IOException{
         final Path sources = Path.of(SOURCE_CODE_LOCATION);
         try{
-        Files.walk(sources)
-                .filter(Files::isRegularFile)
-                .filter(p -> p.toString().endsWith(".java"))
-                .forEach(this::assertSourceWithoutProhibitedLibraries);}catch (IOException e){
+            Files.walk(sources)
+                    .filter(Files::isRegularFile)
+                    .filter(p -> p.toString().endsWith(".java"))
+                    .forEach(this::assertSourceWithoutProhibitedLibraries);}catch (IOException e){
             System.out.println(e.getMessage());
         }
     }
