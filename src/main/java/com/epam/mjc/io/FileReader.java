@@ -5,7 +5,8 @@ import java.io.FileInputStream;
 import java.io.IOException;
 
 import java.util.ArrayList;
-
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 public class FileReader {
@@ -38,7 +39,8 @@ public class FileReader {
             }
 
         }catch (Exception e){
-            System.out.println(e.getMessage());
+            Logger logger=Logger.getLogger(FileReader.class.getName());
+            logger.log(Level.WARNING,"This is important!");
         }
     return profile;
     }
