@@ -5,7 +5,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+
 
 
 public class FileReader {
@@ -44,6 +44,7 @@ public class FileReader {
         }catch (Exception e){
             System.out.println(e.getMessage());
         }finally {
+            assert f != null;
             f.close();
         }
 
