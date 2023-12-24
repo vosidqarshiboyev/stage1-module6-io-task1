@@ -2,7 +2,6 @@ package com.epam.mjc.io;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.IOException;
 
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -16,25 +15,27 @@ public class FileReader {
         try(FileInputStream f=new FileInputStream(file);){
 
             int c;
-            String s = "";
+            StringBuilder s = new StringBuilder("");
             while ((c = f.read()) != -1) {
-                s = s + (char) c;
+                s.append((char) c);
 
             }
-            s = s.replace(":", " ");
-            s = s.replace("\n", " ");
-            ArrayList<String> a = new ArrayList<>();
-            for (String b : (s.split(" "))) {
-                if (!b.isEmpty())
-                    a.add(b.trim());
+            String a=new String(s);
+            a=a.replace(":"," ");
+            a = a.replace("\n", " ");
+            s=new StringBuilder(a);
+            ArrayList<String> b = new ArrayList<>();
+            for (String h : (a.split(" "))) {
+                if (!h.isEmpty())
+                    b.add(h.trim());
             }
 
-            if (a.size() == 8) {
+            if (b.size() == 8) {
 
-                profile.setAge(Integer.parseInt(a.get(3)));
-                profile.setName(a.get(1));
-                profile.setPhone(Long.parseLong(a.get(7)));
-                profile.setEmail(a.get(5));
+                profile.setAge(Integer.parseInt(b.get(3)));
+                profile.setName(b.get(1));
+                profile.setPhone(Long.parseLong(b.get(7)));
+                profile.setEmail(b.get(5));
 
             }
 
