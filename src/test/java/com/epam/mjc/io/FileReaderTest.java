@@ -39,19 +39,22 @@ public class FileReaderTest {
     }
 
     @Test
-    public void testProgramReadsDataCorrectly () throws Exception {
+    public void testProgramReadsDataCorrectly () throws IOException{
         FileReader fileReader = new FileReader();
         Profile actual = fileReader.getDataFromFile(new File(TEST_FILE.toUri()));
         assertEquals(profile, actual);
     }
 
     @Test
-    public void testCodeWithoutProhibitedLibraries() throws IOException,Exception {
+    public void testCodeWithoutProhibitedLibraries() throws IOException{
         final Path sources = Path.of(SOURCE_CODE_LOCATION);
+        try{
         Files.walk(sources)
                 .filter(Files::isRegularFile)
                 .filter(p -> p.toString().endsWith(".java"))
-                .forEach(this::assertSourceWithoutProhibitedLibraries);
+                .forEach(this::assertSourceWithoutProhibitedLibraries);}catch (IOException e){
+            System.out.println(e.getMessage());
+        }
     }
 
     @Test

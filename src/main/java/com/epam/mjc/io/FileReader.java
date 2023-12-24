@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class FileReader {
 
-    public Profile getDataFromFile(File file) throws IOException,Exception {
+    public Profile getDataFromFile(File file) throws IOException{
         FileInputStream f=null;
         Profile profile=new Profile();
         try {
