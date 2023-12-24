@@ -39,14 +39,14 @@ public class FileReaderTest {
     }
 
     @Test
-    public void testProgramReadsDataCorrectly () throws IOException {
+    public void testProgramReadsDataCorrectly () throws Exception {
         FileReader fileReader = new FileReader();
         Profile actual = fileReader.getDataFromFile(new File(TEST_FILE.toUri()));
         assertEquals(profile, actual);
     }
 
     @Test
-    public void testCodeWithoutProhibitedLibraries() throws IOException {
+    public void testCodeWithoutProhibitedLibraries() throws IOException,Exception {
         final Path sources = Path.of(SOURCE_CODE_LOCATION);
         Files.walk(sources)
                 .filter(Files::isRegularFile)
