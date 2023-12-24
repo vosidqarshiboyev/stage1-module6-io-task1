@@ -11,25 +11,24 @@ import java.util.ArrayList;
 public class FileReader {
 
     public Profile getDataFromFile(File file){
-        FileInputStream f=null;
         Profile profile=new Profile();
-        try {
-            f=new FileInputStream(file);
+        try(FileInputStream f=new FileInputStream(file);){
+
             int c;
-            String s="";
-            while((c=f.read())!=-1){
-                s=s+(char)c;
+            String s = "";
+            while ((c = f.read()) != -1) {
+                s = s + (char) c;
 
             }
-            s=s.replace(":"," ");
-            s=s.replace("\n"," ");
-            ArrayList <String>a=new ArrayList<>();
-            for (String b:(s.split(" "))){
-                if(!b.isEmpty())
+            s = s.replace(":", " ");
+            s = s.replace("\n", " ");
+            ArrayList<String> a = new ArrayList<>();
+            for (String b : (s.split(" "))) {
+                if (!b.isEmpty())
                     a.add(b.trim());
             }
 
-            if(a.size()==8) {
+            if (a.size() == 8) {
 
                 profile.setAge(Integer.parseInt(a.get(3)));
                 profile.setName(a.get(1));
@@ -40,16 +39,7 @@ public class FileReader {
 
         }catch (Exception e){
             System.out.println(e.getMessage());
-        }finally {
-            assert f != null;
-            try {
-                f.close();
-            } catch (IOException e) {
-                System.out.println(e.getMessage());
-            }
-
         }
-
     return profile;
     }
 
